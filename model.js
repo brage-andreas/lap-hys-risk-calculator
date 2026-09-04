@@ -164,11 +164,13 @@ function calculateLogOdds(modelCoefficients, modelInput) {
     "sykehusvolum",
   );
 
-  logOdds += getCategoryCoefficient(
-    modelCoefficients.indication,
-    modelInput.indication,
-    "indikasjon",
-  );
+  for (const indication of modelInput.indications) {
+    logOdds += getCategoryCoefficient(
+      modelCoefficients.indication,
+      indication,
+      "indikasjon",
+    );
+  }
 
   logOdds += getCategoryCoefficient(
     modelCoefficients.hysterectomyType,

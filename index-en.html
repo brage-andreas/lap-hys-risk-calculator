@@ -78,17 +78,27 @@
         <fieldset>
           <legend>Planned procedure</legend>
 
-          <p>
-            <label for="indication">Indication</label><br>
-            <select id="indication" name="indication" required>
-              <option value="">Select indication</option>
-              <option value="fibroma">Fibroma</option>
-              <option value="pain-endometriosis-adenomyosis">Pain/endometriosis/adenomyosis</option>
-              <option value="corpus-cancer">Corpus cancer</option>
-              <option value="cervical-cancer">Cervical cancer</option>
-              <option value="none-of-these">None of these</option>
-            </select>
-          </p>
+          <fieldset>
+            <legend>Indication</legend>
+            <p>
+              <label>
+                <input type="checkbox" name="indication" value="fibroma">
+                Fibroma
+              </label><br>
+              <label>
+                <input type="checkbox" name="indication" value="pain-endometriosis-adenomyosis">
+                Pain/endometriosis/adenomyosis
+              </label><br>
+              <label>
+                <input type="checkbox" name="indication" value="corpus-cancer">
+                Corpus cancer
+              </label><br>
+              <label>
+                <input type="checkbox" name="indication" value="cervical-cancer">
+                Cervical cancer
+              </label>
+            </p>
+          </fieldset>
 
           <p>
             <label for="hospital-volume">Annual hospital laparoscopic hysterectomy volume</label><br>

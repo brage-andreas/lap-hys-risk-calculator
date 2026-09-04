@@ -78,17 +78,27 @@
         <fieldset>
           <legend>Planlagt inngrep</legend>
 
-          <p>
-            <label for="indication">Indikasjon (årsak til inngrepet)</label><br>
-            <select id="indication" name="indication" required>
-              <option value="">Velg indikasjon</option>
-              <option value="fibroma">Myom (muskelknute i livmor)</option>
-              <option value="pain-endometriosis-adenomyosis">Smerte/endometriose/adenomyose</option>
-              <option value="corpus-cancer">Corpuscancer (livmorkreft)</option>
-              <option value="cervical-cancer">Cervixcancer (livmorhalskreft)</option>
-              <option value="none-of-these">Ingen av disse</option>
-            </select>
-          </p>
+          <fieldset>
+            <legend>Indikasjon (årsak til inngrepet)</legend>
+            <p>
+              <label>
+                <input type="checkbox" name="indication" value="fibroma">
+                Myom (muskelknute i livmor)
+              </label><br>
+              <label>
+                <input type="checkbox" name="indication" value="pain-endometriosis-adenomyosis">
+                Smerte/endometriose/adenomyose
+              </label><br>
+              <label>
+                <input type="checkbox" name="indication" value="corpus-cancer">
+                Corpuscancer (livmorkreft)
+              </label><br>
+              <label>
+                <input type="checkbox" name="indication" value="cervical-cancer">
+                Cervixcancer (livmorhalskreft)
+              </label>
+            </p>
+          </fieldset>
 
           <p>
             <label for="hospital-volume">Sykehusets årlige volum av laparoskopiske hysterektomier</label><br>

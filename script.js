@@ -46,7 +46,7 @@ function readModelInput() {
     priorLaparotomy: submittedValues.get("priorLaparotomy"),
     priorLaparotomyMissing: false,
     hospitalVolume: submittedValues.get("hospitalVolume"),
-    indication: submittedValues.get("indication"),
+    indications: submittedValues.getAll("indication"),
     hysterectomyType: submittedValues.get("hysterectomyType"),
     robotAssisted: submittedValues.get("robotAssisted"),
   };
