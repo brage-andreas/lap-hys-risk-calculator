@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Risk following laparoscopic hysterectomy</title>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="Language">
+        <a href="index.html" lang="no">Norsk</a>
+      </nav>
+
+      <h1>Risk following laparoscopic hysterectomy</h1>
+
+      <form id="risk-calculator">
+        <fieldset>
+          <legend>Patient information</legend>
+
+          <p>
+            <label for="age">Age (years)</label><br>
+            <input id="age" name="age" type="number" min="18" max="120" step="1" required>
+          </p>
+
+          <p>
+            <label for="height">Height (cm)</label><br>
+            <input id="height" name="height" type="number" min="100" max="250" step="0.1" required>
+          </p>
+
+          <p>
+            <label for="weight">Weight (kg)</label><br>
+            <input id="weight" name="weight" type="number" min="30" max="350" step="0.1" required>
+          </p>
+
+          <p>
+            <label for="asa-class">ASA group</label><br>
+            <select id="asa-class" name="asaClass" required>
+              <option value="">Select ASA group</option>
+              <option value="1">1 - Healthy patient without known systemic disease</option>
+              <option value="2">2 - Mild systemic disease without substantial functional limitation</option>
+              <option value="3-or-higher">3+ - Significant systemic disease that may affect function and surgical risk</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="education-level">Education Level</label><br>
+            <select id="education-level" name="educationLevel" required>
+              <option value="">Select education level</option>
+              <option value="primary-or-secondary">Primary/Secondary Education</option>
+              <option value="college-or-university">College/University Education</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Prior procedures</legend>
+
+          <p>
+            <label for="prior-laparotomy">Prior laparotomy</label><br>
+            <select id="prior-laparotomy" name="priorLaparotomy" required>
+              <option value="">Select an answer</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="prior-laparoscopy">Prior laparoscopy</label><br>
+            <select id="prior-laparoscopy" name="priorLaparoscopy" required>
+              <option value="">Select an answer</option>
+              <option value="none">No</option>
+              <option value="one">Yes, one</option>
+              <option value="more-than-one">Yes, more than one</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Planned procedure</legend>
+
+          <p>
+            <label for="indication">Indication</label><br>
+            <select id="indication" name="indication" required>
+              <option value="">Select indication</option>
+              <option value="fibroma">Fibroma</option>
+              <option value="pain-endometriosis-adenomyosis">Pain/endometriosis/adenomyosis</option>
+              <option value="corpus-cancer">Corpus cancer</option>
+              <option value="cervical-cancer">Cervical cancer</option>
+              <option value="none-of-these">None of these</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="hospital-volume">Annual hospital laparoscopic hysterectomy volume</label><br>
+            <select id="hospital-volume" name="hospitalVolume" required>
+              <option value="">Select hospital volume</option>
+              <option value="49-or-fewer">49 or fewer procedures per year</option>
+              <option value="50-to-99">50-99 procedures per year</option>
+              <option value="100-or-more">100 or more procedures per year</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="hysterectomy-type">Type of laparoscopic hysterectomy</label><br>
+            <select id="hysterectomy-type" name="hysterectomyType" required>
+              <option value="">Select type</option>
+              <option value="total">Total</option>
+              <option value="supracervical">Supracervical</option>
+              <option value="other">Other type of LH (for example LAVH)</option>
+              <option value="radical">Radical hysterectomy</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="robot-assisted">Robot-assisted surgery</label><br>
+            <select id="robot-assisted" name="robotAssisted" required>
+              <option value="">Select an answer</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <p>
+          <button type="submit">Calculate risk</button>
+          <button type="reset">Reset</button>
+        </p>
+      </form>
+
+      <section id="results" aria-live="polite" hidden>
+        <h2>Results</h2>
+        <p>
+          Individual risk of intraoperative complications and unplanned
+          conversion to laparotomy during laparoscopic hysterectomy:
+          <strong><output id="intraoperative-risk">-</output></strong>
+        </p>
+        <p>
+          Individual risk of moderate to severe postoperative complications
+          following laparoscopic hysterectomy:
+          <strong><output id="postoperative-risk">-</output></strong>
+        </p>
+      </section>
+    </main>
+
+    <script src="model.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

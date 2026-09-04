@@ -1,2 +1,3 @@
 # lap-hys-risk-calculator
-A laparoscopic hysterectomy risk calculator
+
+En kalkulator for å beregne risiko ved laparoskopisk hysterektomi.

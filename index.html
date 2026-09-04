@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Risiko ved laparoskopisk hysterektomi</title>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="Språk">
+        <a href="index-en.html" lang="en">English</a>
+      </nav>
+
+      <h1>Risiko ved laparoskopisk hysterektomi</h1>
+
+      <form id="risk-calculator">
+        <fieldset>
+          <legend>Pasientopplysninger</legend>
+
+          <p>
+            <label for="age">Alder (år)</label><br>
+            <input id="age" name="age" type="number" min="18" max="120" step="1" required>
+          </p>
+
+          <p>
+            <label for="height">Høyde (cm)</label><br>
+            <input id="height" name="height" type="number" min="100" max="250" step="0.1" required>
+          </p>
+
+          <p>
+            <label for="weight">Vekt (kg)</label><br>
+            <input id="weight" name="weight" type="number" min="30" max="350" step="0.1" required>
+          </p>
+
+          <p>
+            <label for="asa-class">ASA-klasse</label><br>
+            <select id="asa-class" name="asaClass" required>
+              <option value="">Velg ASA-klasse</option>
+              <option value="1">1 - Frisk pasient uten kjent systemsykdom</option>
+              <option value="2">2 - Mild systemsykdom uten vesentlig funksjonspåvirkning</option>
+              <option value="3-or-higher">3+ - Betydelig systemsykdom som kan påvirke funksjon og operasjonsrisiko</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="education-level">Utdanningsnivå</label><br>
+            <select id="education-level" name="educationLevel" required>
+              <option value="">Velg utdanningsnivå</option>
+              <option value="primary-or-secondary">Grunnskole/videregående skole</option>
+              <option value="college-or-university">Høyskole/universitet</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tidligere inngrep</legend>
+
+          <p>
+            <label for="prior-laparotomy">Tidligere laparotomi (åpent bukinngrep)</label><br>
+            <select id="prior-laparotomy" name="priorLaparotomy" required>
+              <option value="">Velg svar</option>
+              <option value="no">Nei</option>
+              <option value="yes">Ja</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="prior-laparoscopy">Tidligere laparoskopi (kikkhull)</label><br>
+            <select id="prior-laparoscopy" name="priorLaparoscopy" required>
+              <option value="">Velg svar</option>
+              <option value="none">Nei</option>
+              <option value="one">Ja, én</option>
+              <option value="more-than-one">Ja, flere enn én</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Planlagt inngrep</legend>
+
+          <p>
+            <label for="indication">Indikasjon (årsak til inngrepet)</label><br>
+            <select id="indication" name="indication" required>
+              <option value="">Velg indikasjon</option>
+              <option value="fibroma">Myom (muskelknute i livmor)</option>
+              <option value="pain-endometriosis-adenomyosis">Smerte/endometriose/adenomyose</option>
+              <option value="corpus-cancer">Corpuscancer (livmorkreft)</option>
+              <option value="cervical-cancer">Cervixcancer (livmorhalskreft)</option>
+              <option value="none-of-these">Ingen av disse</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="hospital-volume">Sykehusets årlige volum av laparoskopiske hysterektomier</label><br>
+            <select id="hospital-volume" name="hospitalVolume" required>
+              <option value="">Velg sykehusvolum</option>
+              <option value="49-or-fewer">49 eller færre inngrep per år</option>
+              <option value="50-to-99">50-99 inngrep per år</option>
+              <option value="100-or-more">100 eller flere inngrep per år</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="hysterectomy-type">Type laparoskopisk hysterektomi</label><br>
+            <select id="hysterectomy-type" name="hysterectomyType" required>
+              <option value="">Velg type</option>
+              <option value="total">Total hysterektomi</option>
+              <option value="supracervical">Supracervikal hysterektomi</option>
+              <option value="other">Annen type laparoskopisk hysterektomi (for eksempel LAVH)</option>
+              <option value="radical">Radikal hysterektomi</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="robot-assisted">Robotassistert kirurgi</label><br>
+            <select id="robot-assisted" name="robotAssisted" required>
+              <option value="">Velg svar</option>
+              <option value="no">Nei</option>
+              <option value="yes">Ja</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <p>
+          <button type="submit">Beregn risiko</button>
+          <button type="reset">Nullstill</button>
+        </p>
+      </form>
+
+      <section id="results" aria-live="polite" hidden>
+        <h2>Resultat</h2>
+        <p>
+          Risiko for intraoperative komplikasjoner og uplanlagt konvertering til laparotomi:
+          <strong><output id="intraoperative-risk">-</output></strong>
+        </p>
+        <p>
+          Risiko for moderate eller alvorlige postoperative komplikasjoner:
+          <strong><output id="postoperative-risk">-</output></strong>
+        </p>
+      </section>
+    </main>
+
+    <script src="model.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
