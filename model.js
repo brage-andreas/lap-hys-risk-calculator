@@ -1,4 +1,7 @@
 const DEFAULT_SURGERY_YEAR = 2024;
+const REFERENCE_AGE = 50;
+const REFERENCE_BODY_MASS_INDEX = 27;
+const MODEL_INPUT_SCALE = 10;
 
 const MODEL_COEFFICIENTS = Object.freeze({
   intraoperative: {
@@ -111,16 +114,22 @@ function getCategoryCoefficient(coefficientsByCategory, category, fieldName) {
 
 function calculateLogOdds(modelCoefficients, modelInput) {
   const surgeryYearDifference = modelInput.surgeryYear - DEFAULT_SURGERY_YEAR;
+  const ageDifferenceFromReference =
+    (modelInput.age - REFERENCE_AGE) / MODEL_INPUT_SCALE;
 
   let logOdds =
     modelCoefficients.intercept +
     modelCoefficients.surgeryYear * surgeryYearDifference +
-    modelCoefficients.age * modelInput.age;
+    modelCoefficients.age * ageDifferenceFromReference;
 
   if (modelInput.bodyMassIndexMissing) {
     logOdds += modelCoefficients.bodyMassIndexMissing;
   } else {
-    logOdds += modelCoefficients.bodyMassIndex * modelInput.bodyMassIndex;
+    const bodyMassIndexDifferenceFromReference =
+      (modelInput.bodyMassIndex - REFERENCE_BODY_MASS_INDEX) / MODEL_INPUT_SCALE;
+
+    logOdds +=
+      modelCoefficients.bodyMassIndex * bodyMassIndexDifferenceFromReference;
   }
 
   if (modelInput.educationLevelMissing) {
