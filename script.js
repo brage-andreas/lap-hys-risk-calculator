@@ -6,6 +6,10 @@ const intraoperativeRiskOutput = document.querySelector(
   "#intraoperative-risk",
 );
 const postoperativeRiskOutput = document.querySelector("#postoperative-risk");
+const indicationCheckboxes = document.querySelectorAll(
+  'input[type="checkbox"][name="indication"]',
+);
+const noIndicationsRadio = document.querySelector("#no-indications");
 
 let numberFormatLocale = "nb-NO";
 
@@ -63,6 +67,35 @@ function displayResults(risks) {
 
   resultsSection.hidden = false;
 }
+
+function synchronizeNoIndicationsRadio() {
+  let hasSelectedIndication = false;
+
+  for (const indicationCheckbox of indicationCheckboxes) {
+    if (indicationCheckbox.checked) {
+      hasSelectedIndication = true;
+      break;
+    }
+  }
+
+  noIndicationsRadio.checked = !hasSelectedIndication;
+}
+
+function clearIndicationCheckboxes() {
+  if (!noIndicationsRadio.checked) {
+    return;
+  }
+
+  for (const indicationCheckbox of indicationCheckboxes) {
+    indicationCheckbox.checked = false;
+  }
+}
+
+for (const indicationCheckbox of indicationCheckboxes) {
+  indicationCheckbox.addEventListener("change", () => synchronizeNoIndicationsRadio());
+}
+
+noIndicationsRadio.addEventListener("change", () => clearIndicationCheckboxes());
 
 calculatorForm.addEventListener("submit", (event) => {
   event.preventDefault();
